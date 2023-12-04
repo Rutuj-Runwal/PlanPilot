@@ -10,7 +10,7 @@ const todoSchema = new Schema({
   userId: String,
   title: String,
   description: String,
-  done: Boolean,
+  status: Boolean,
 });
 
 // Connect to DB
