@@ -1,0 +1,23 @@
+{
+  "name": "planpilot-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rutuj-Runwal/PlanPilot.git"
+  },
+  "author": "Rutuj Runwal (https://github.com/Rutuj-Runwal)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rutuj-Runwal/PlanPilot/issues"
+  },
+  "homepage": "https://github.com/Rutuj-Runwal/PlanPilot#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}
