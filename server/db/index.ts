@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+require("dotenv").config();
 
 //  Define Schemas
 const userSchema = new Schema({
