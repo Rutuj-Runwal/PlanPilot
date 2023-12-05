@@ -40,10 +40,10 @@ app.post("/signup", async (req: Request, res: Response) => {
         res.status(200).json(`User created: ${email}`);
       })
       .catch((err: Error) => {
-        res.status(500).send(err);
+        res.status(500).json(err);
       });
   } else {
-    res.status(500).send(`User with ${email} already present`);
+    res.status(500).json(`User with ${email} already present`);
   }
 });
 
@@ -55,7 +55,7 @@ app.post("/login", async (req: Request, res: Response) => {
   // Check if user already exists in DB
   const user = await User.findOne({ email: email, password: password });
   if (user) {
-    res.status(200).send("Login Successful!!");
+    res.status(200).json("Login Successful!!");
   } else {
     res.status(403).json({ message: "Invalid username or password" });
   }

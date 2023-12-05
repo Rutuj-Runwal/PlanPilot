@@ -6,7 +6,8 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSumbit = async () => {
+  const handleSumbit = async (e: Event) => {
+    e.preventDefault();
     const resp = await fetch(import.meta.env.VITE_SERVER_BASE_URL + "/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,7 +26,10 @@ const App = () => {
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form
+          className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+          onSubmit={handleSumbit}
+        >
           <div className="space-y-6">
             <div>
               <label
@@ -98,15 +102,12 @@ const App = () => {
             </div>
 
             <div>
-              <button
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={handleSumbit}
-              >
+              <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Sign Up
               </button>
             </div>
           </div>
-        </div>
+        </form>
         <div className="text-sm flex items-center mx-auto mt-3">
           <Link
             to="/login"
