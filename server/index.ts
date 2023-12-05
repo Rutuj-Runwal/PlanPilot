@@ -14,36 +14,40 @@ app.get("/", (req: Request, res: Response) => {
 
 app.post("/signup", async (req: Request, res: Response) => {
   // Get username and password input from body
-  const { username, password }: { username: String; password: String } = {
+  const {
+    name,
+    email,
+    password,
+  }: { name: String; email: String; password: String } = {
     ...req.body,
   };
 
   // Check if user already exists in DB
-  const user = await User.findOne({ username: username });
+  const user = await User.findOne({ email: email });
 
   if (!user) {
     // Add new user to DB
-    const newUser = new User({ username, password });
+    const newUser = new User({ name, email, password });
     await newUser
       .save()
       .then(() => {
-        res.status(200).json(`User created: ${username}`);
+        res.status(200).json(`User created: ${email}`);
       })
       .catch((err: Error) => {
         res.status(500).send(err);
       });
   } else {
-    res.status(500).send(`User with ${username} already present`);
+    res.status(500).send(`User with ${email} already present`);
   }
 });
 
 app.post("/login", async (req: Request, res: Response) => {
   // Get username and password input from body
-  const { username, password }: { username: String; password: String } = {
+  const { email, password }: { email: String; password: String } = {
     ...req.body,
   };
   // Check if user already exists in DB
-  const user = await User.findOne({ username: username, password: password });
+  const user = await User.findOne({ email: email, password: password });
   if (user) {
     res.status(200).send("Login Successful!!");
   } else {
