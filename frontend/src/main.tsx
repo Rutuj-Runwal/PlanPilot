@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import Login from "./components/Login.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import TodoDashboard from "./components/TodoDashboard.tsx";
+import TodoCreate from "./components/TodoCreate.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,13 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/todos",
+    children: [
+      { index: true, element: <TodoDashboard /> },
+      { path: "new", element: <TodoCreate /> },
+    ],
   },
 ]);
 
