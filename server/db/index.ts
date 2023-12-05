@@ -3,7 +3,8 @@ require("dotenv").config();
 
 //  Define Schemas
 const userSchema = new Schema({
-  username: String,
+  name: String,
+  email: String,
   password: String,
 });
 
