@@ -1,12 +1,18 @@
 import express, { Request, Response } from "express";
 import { User, Todo } from "./db";
 require("dotenv").config();
+import cors from "cors";
 const PORT = process.env.PORT;
+const corsOptions = {
+  origin: process.env.FRONTEND_URI,
+  optionsSuccessStatus: 200,
+};
 
 var app = express();
 
 // Use json middleware
 app.use(express.json());
+app.use(cors(corsOptions));
 
 app.get("/", (req: Request, res: Response) => {
   res.send("PlanPilot!");
